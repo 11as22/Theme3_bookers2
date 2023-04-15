@@ -4,7 +4,7 @@
     <title>Bookers2Ver2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -23,28 +23,58 @@
           </button>
           <div class ="collapse navbar-collapse" id ="navbarNavDropdown">
             <ul class ="navber-nav ml-auto">
-              
+              <% if user_signed_in? %>
               <li>
                 <%= link_to "/", class: "nav-link text-light" do %>
                 <i class="fas fa-home"></i>
                 Home
                 <% end %>
               </li>
-              
+
+              <li>
+                <%= link_to about_path, class: "nav-link text-light" do %>
+                <i class="fas fa-users"></i>
+                Users
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to "/", class: "nav-link text-light" do %>
+                <i class="fas fa-book-open"></i>
+                Books
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to "/", class: "nav-link text-light" do %>
+                <i class="fas fa-sign-out-alt"></i>
+                Log out
+                <% end %>
+              </li>
+
+              <% else %>
+
+              <li>
+                <%= link_to "/", class: "nav-link text-light" do %>
+                <i class="fas fa-home"></i>
+                Home
+                <% end %>
+              </li>
+
               <li>
                 <%= link_to about_path, class: "nav-link text-light" do %>
                 <i class="fas fa-link"></i>
                 About
                 <% end %>
               </li>
-              
+
               <li>
                 <%= link_to "/", class: "nav-link text-light" do %>
                 <i class="fas fa-user-plus"></i>
                 Sign up
                 <% end %>
               </li>
-              
+
               <li>
                 <%= link_to "/", class: "nav-link text-light" do %>
                 <i class="fas fa-sign-in-alt"></i>
@@ -52,12 +82,14 @@
                 <% end %>
               </li>
               
+              <% end %>
+
             </ul>
           </div>
         </div>
       </nav>
      </header>
-     
+
     <main>
       <div class ="container">
         <div class ="row">
@@ -65,7 +97,7 @@
         </div>
       </div>
     </main>
-    
+
     <footer>
       <div class ="container　mt-5">
         <div class ="row">

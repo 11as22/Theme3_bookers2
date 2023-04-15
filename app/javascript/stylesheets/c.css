@@ -1,3 +1,4 @@
-* {
+.navber-nav {
+  display: flex;
   list-style: none;
 }
