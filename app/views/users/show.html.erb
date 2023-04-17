@@ -2,16 +2,22 @@
   <div class ="row">
     <div class ="col-md-3">
       <h2>User info</h2>
+      <%= image_tag @user.get_profile_image(100,100) %>
       <table class ="table">
         <tbody>
           <tr>
+            <th>
+               
+            </th>
+          </tr>
+          <tr>
             <th>name</th>
-            <th></th>
+            <th><%= current_user.name %></th>
           </tr>
           
           <tr>
             <th>introduction</th>
-            <th></th>
+            <th><%= current_user.introduction %></th>
           </tr>
         </tbody>
       </table>
@@ -26,13 +32,13 @@
       
       <%= form_with model: @book do |f| %>
       <div class ="form-group">
-        <label>Title</label>
-        <%= f.text_field :title %>
+        <%= f.label :title %></br>
+        <%= f.text_field :title, class: "form-control book_title" %>
       </div>
       
       <div class ="form-group">
-        <label>Opinion</label>
-        <%= f.text_area :body %>
+        <%= f.label :opinion %></br>
+        <%= f.text_area :body, class: "form-control book_body" %>
       </div>
       
       <div class ="form-group">
@@ -43,7 +49,7 @@
     </div>
     
     <div class ="col-md-8 offset-md-1">
-      <h2>Books</h2>
+      <h2>Book detail</h2>
       <table class ="table table-hover table-inverse">
         <thead>
           <tr>
@@ -54,11 +60,15 @@
           </tr>
         </thead>
         
+        <% @books.each do |book| %>
         <tbody>
           <tr>
-            <td></td>
+            <td>：<%= book.title %></td>
+            <td>：<%= book.body %></td>
+            <td><%= link_to "Edit", edit_book_path(book), class: "btn btn-sm btn-success" %></td>
           </tr>
         </tbody>
+        <% end %>
       </table>
     </div>
   </div>
